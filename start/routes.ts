@@ -24,11 +24,16 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.group(() => {
 
   Route.get('/', async () => {
-    return { hello: 'world' }
+    return { hello: 'new world' }
   })
 
   // aqui estou chamadno o model também o migration 
-  Route.post('/moments','momentsController.store')
+  Route.resource('/moments','momentsController').apiOnly()
+
+  // O .apiOnly() traz somente os metodos para a api
+  // RESOURCE CHAMA TODOS OS METODOS QUE A REQUESTE TEM 
+  
+  Route.post('/moments/:momentId/comments','CommentsController.store')
 
 }).prefix('/api') 
 

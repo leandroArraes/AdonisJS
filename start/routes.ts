@@ -35,7 +35,13 @@ Route.group(() => {
   
   Route.post('/moments/:momentId/comments','CommentsController.store')
 
+  Route.resource('/comment','commentsController').apiOnly()
+  
+ 
+  
+
 }).prefix('/api') 
+
 
 
 /* Route.get('/', async () => {

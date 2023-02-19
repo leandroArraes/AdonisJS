@@ -17,23 +17,15 @@ export default class MomentsController {
 
 
     public async store({request, response}: HttpContextContract){
-        
-        
-        
+               
         const body = request.body()
-
             // em file('image',  <aqui eu posso colocar a condição para o arquivo , como tamanho> )
         const image = request.file('image',this.validationOptions)
-
         if(image){
             const imageName = `${uuidv4()}.${image.extname}`
-
             await image.move(Application.tmpPath('uploads'),{
                 name: imageName
-            })
-
-           
-
+            })        
             body.image = imageName
         }
         
